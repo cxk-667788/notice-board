@@ -1,0 +1,14 @@
+{
+  "name": "notice-board",
+  "version": "1.0.0",
+  "description": "多用户通知发布系统",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "qrcode": "^1.5.4",
+    "ws": "^8.21.3"
+  }
+}
