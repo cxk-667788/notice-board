@@ -1,19 +1,7 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    { "src": "/api/notifications/(?<id>[^/]+)/pin", "dest": "/api/notifications?id=$id" },
-    { "src": "/api/notifications/(?<id>[^/]+)", "dest": "/api/notifications?id=$id" },
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/public/$1" }
+  "rewrites": [
+    { "source": "/api/notifications/:id/pin", "destination": "/api/notifications?id=:id" },
+    { "source": "/api/notifications/:id", "destination": "/api/notifications?id=:id" }
   ]
 }
