@@ -1,0 +1,18 @@
+[
+  {
+    "id": "mub9j8yk2gir",
+    "title": "欢迎使用通知公告板",
+    "content": "这是一个多用户通知发布系统。管理员可以在此发布通知，所有访问该页面的用户都能看到。",
+    "level": "important",
+    "timestamp": 1789996222748,
+    "pinned": false
+  },
+  {
+    "id": "mubcn99z33ub",
+    "title": "WebSocket测试",
+    "content": "如果你看到这条通知说明实时推送正常",
+    "level": "urgent",
+    "timestamp": 1790001448631,
+    "pinned": false
+  }
+]
