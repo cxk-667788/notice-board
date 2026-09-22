@@ -282,15 +282,11 @@ function stopPolling() {
 }
 
 /* ===== QR Code ===== */
-async function showQRCode() {
-  try {
-    const data = await api('/api/qrcode');
-    document.getElementById('qrImage').src = data.qr;
-    document.getElementById('qrUrl').textContent = data.url;
-    document.getElementById('qrModal').classList.add('active');
-  } catch (err) {
-    toast('生成二维码失败', 'error');
-  }
+function showQRCode() {
+  const url = window.location.origin;
+  document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}`;
+  document.getElementById('qrUrl').textContent = url;
+  document.getElementById('qrModal').classList.add('active');
 }
 
 function closeQRCode() {
