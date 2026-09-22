@@ -34,6 +34,8 @@
             <span class="stat-divider"></span>
             <span class="stat-item live-indicator"><span class="live-dot"></span> 实时更新</span>
             <span class="stat-divider"></span>
+            <button class="stat-item refresh-btn" onclick="refreshNotices()" id="refreshBtn">刷新</button>
+            <span class="stat-divider"></span>
             <button class="stat-item qr-btn" onclick="showQRCode()">扫码访问</button>
           </div>
         </div>
@@ -105,6 +107,7 @@
             <div class="admin-section-header">
               <h2 class="admin-section-title">已发布通知</h2>
               <span class="admin-count" id="adminCount">0</span>
+              <button class="refresh-btn admin-refresh-btn" onclick="refreshAdminList()" id="refreshAdminBtn">刷新</button>
             </div>
             <div class="admin-list" id="adminList">
               <div class="empty-state small">
