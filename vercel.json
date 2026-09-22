@@ -13,6 +13,7 @@
   "routes": [
     { "src": "/api/notifications/(?<id>[^/]+)/pin", "dest": "/api/notifications?id=$id" },
     { "src": "/api/notifications/(?<id>[^/]+)", "dest": "/api/notifications?id=$id" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/(.*)", "dest": "/public/$1" }
   ]
 }
