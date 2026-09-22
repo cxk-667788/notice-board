@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/api/admin/login", "dest": "/api/admin/login" },
+    { "src": "/api/notifications", "dest": "/api/notifications" },
+    { "src": "/api/notifications/(?<id>[^/]+)", "dest": "/api/notifications?id=$id" },
+    { "src": "/api/notifications/(?<id>[^/]+)/pin", "dest": "/api/notifications?id=$id" },
+    { "src": "/api/qrcode", "dest": "/api/qrcode" },
+    { "src": "/(.*)", "dest": "/public/$1" }
+  ]
+}
