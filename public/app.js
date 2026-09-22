@@ -131,6 +131,15 @@ async function loadNotices() {
   }
 }
 
+function refreshNotices() {
+  const btn = document.getElementById('refreshBtn');
+  if (btn) btn.classList.add('refresh-btn--spinning');
+  loadNotices().finally(() => {
+    setTimeout(() => { if (btn) btn.classList.remove('refresh-btn--spinning'); }, 500);
+  });
+  toast('已刷新', 'info');
+}
+
 function renderNotices(notices) {
   const list = document.getElementById('noticeList');
   if (notices.length === 0) {
@@ -200,6 +209,15 @@ async function loadAdminList() {
   } catch (err) {
     toast('加载失败', 'error');
   }
+}
+
+function refreshAdminList() {
+  const btn = document.getElementById('refreshAdminBtn');
+  if (btn) btn.classList.add('refresh-btn--spinning');
+  loadAdminList().finally(() => {
+    setTimeout(() => { if (btn) btn.classList.remove('refresh-btn--spinning'); }, 500);
+  });
+  toast('已刷新', 'info');
 }
 
 function renderAdminList(notices) {
