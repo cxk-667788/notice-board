@@ -1,8 +1,22 @@
 const crypto = require('crypto');
 
 let notifications = [];
-let activeTokens = new Set();
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+const SECRET = process.env.JWT_SECRET || 'notice-board-secret-2026';
+
+function verifyToken(token) {
+  if (!token) return false;
+  const parts = token.split('.');
+  if (parts.length !== 2) return false;
+  const [data, sig] = parts;
+  const expectedSig = crypto.createHmac('sha256', SECRET).update(data).digest('hex');
+  if (sig !== expectedSig) return false;
+  try {
+    const payload = JSON.parse(Buffer.from(data, 'base64url').toString());
+    return payload.role === 'admin';
+  } catch {
+    return false;
+  }
+}
 
 export default function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -21,7 +35,7 @@ export default function handler(req, res) {
 
   function checkAuth() {
     const token = req.headers['x-admin-token'];
-    if (!token || !activeTokens.has(token)) {
+    if (!token || !verifyToken(token)) {
       res.status(401).json({ error: '未授权访问' });
       return false;
     }
